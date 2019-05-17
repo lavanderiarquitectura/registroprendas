@@ -1,0 +1,6 @@
+com/laundry/clothsregisterrest/repository/PrendaRepository.class
+com/laundry/clothsregisterrest/controller/PrendaController.class
+com/laundry/clothsregisterrest/entity/tipoLavado.class
+com/laundry/clothsregisterrest/ClothsRegisterRestApplication.class
+com/laundry/clothsregisterrest/entity/TipoTela.class
+com/laundry/clothsregisterrest/entity/Prenda.class
