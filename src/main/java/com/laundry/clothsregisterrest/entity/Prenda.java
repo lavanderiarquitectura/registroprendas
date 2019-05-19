@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Prenda")
+@Table(name = "prenda")
 public class Prenda {
 
     @Id
@@ -13,8 +13,9 @@ public class Prenda {
 
     private  String  color;
 
-    private String cuarto;
+    private Integer id_cuarto;
 
+    private String marca;
 
     @Temporal(TemporalType.DATE)
     private Date fecha_ingreso;
@@ -24,18 +25,19 @@ public class Prenda {
 
     private Integer id_tipo_tela;
 
-    private Integer id_tipo_lavado;
+    private Integer id_tipo_operacion;
 
-
-    public Prenda(Integer id_prenda, String color, String cuarto, Date fecha_ingreso, Date fecha_entrega, Integer id_tipo_tela, Integer id_tipo_lavado) {
+    public Prenda(Integer id_prenda, String color, Integer id_cuarto, String marca, Date fecha_ingreso, Date fecha_entrega, Integer id_tipo_tela, Integer id_tipo_operacion) {
         this.id_prenda = id_prenda;
         this.color = color;
-        this.cuarto = cuarto;
+        this.id_cuarto = id_cuarto;
+        this.marca = marca;
         this.fecha_ingreso = fecha_ingreso;
         this.fecha_entrega = fecha_entrega;
         this.id_tipo_tela = id_tipo_tela;
-        this.id_tipo_lavado = id_tipo_lavado;
+        this.id_tipo_operacion = id_tipo_operacion;
     }
+
     public Prenda(){
 
     }
@@ -48,8 +50,8 @@ public class Prenda {
         this.color = color;
     }
 
-    public void setCuarto(String cuarto) {
-        this.cuarto = cuarto;
+    public void setId_cuarto(Integer id_cuarto) {
+        this.id_cuarto = id_cuarto;
     }
 
     public void setFecha_ingreso(Date fecha_ingreso) {
@@ -64,10 +66,13 @@ public class Prenda {
         this.id_tipo_tela = id_tipo_tela;
     }
 
-    public void setId_tipo_lavado(Integer id_tipo_lavado) {
-        this.id_tipo_lavado = id_tipo_lavado;
+    public void setId_tipo_operacion(Integer id_tipo_operacion) {
+        this.id_tipo_operacion = id_tipo_operacion;
     }
 
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
 
 
     public Integer getId_prenda() {
@@ -78,8 +83,8 @@ public class Prenda {
         return color;
     }
 
-    public String getCuarto() {
-        return cuarto;
+    public Integer getId_cuarto() {
+        return id_cuarto;
     }
 
     public Date getFecha_ingreso() {
@@ -94,7 +99,13 @@ public class Prenda {
         return id_tipo_tela;
     }
 
-    public Integer getId_tipo_lavado() {
-        return id_tipo_lavado;
+    public Integer getId_tipo_operacion() {
+        return id_tipo_operacion;
     }
+
+    public String getMarca() {
+        return marca;
+    }
+
+
 }

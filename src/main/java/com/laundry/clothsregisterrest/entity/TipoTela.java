@@ -1,10 +1,9 @@
 package com.laundry.clothsregisterrest.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table(name = "tipo_lavado")
+@Table(name = "tipo_tela")
 public class TipoTela {
 
     @Id
