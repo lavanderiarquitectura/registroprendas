@@ -1,6 +1,7 @@
 package com.laundry.clothsregisterrest.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "tipo_tela")
@@ -18,6 +19,7 @@ public class TipoTela {
         this.tipo_tela = tipo_tela;
     }
 
+
     public Integer getId_tipo_tela() {
         return id_tipo_tela;
     }
@@ -33,4 +35,5 @@ public class TipoTela {
     public void setTipo_tela(String tipo_tela) {
         this.tipo_tela = tipo_tela;
     }
+
 }

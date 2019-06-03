@@ -9,23 +9,24 @@ public class TipoOperacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id_tipo_lavado;
-
+    private Integer id_tipo_operacion;
     private String descripcion;
-    private Float tarifa;
 
-    public TipoOperacion(Integer id_tipo_lavado, String descripcion, Float tarifa) {
-        this.id_tipo_lavado = id_tipo_lavado;
+    public TipoOperacion(Integer id_tipo_operacion, String descripcion) {
+        this.id_tipo_operacion = id_tipo_operacion;
         this.descripcion = descripcion;
-        this.tarifa = tarifa;
     }
 
-    public Integer getId_tipo_lavado() {
-        return id_tipo_lavado;
+    public TipoOperacion() {
     }
 
-    public void setId_tipo_lavado(Integer id_tipo_lavado) {
-        this.id_tipo_lavado = id_tipo_lavado;
+
+    public Integer getId_tipo_operacion() {
+        return id_tipo_operacion;
+    }
+
+    public void setId_tipo_operacion(Integer id_tipo_operacion) {
+        this.id_tipo_operacion = id_tipo_operacion;
     }
 
     public String getDescripcion() {
@@ -36,11 +37,4 @@ public class TipoOperacion {
         this.descripcion = descripcion;
     }
 
-    public Float getTarifa() {
-        return tarifa;
-    }
-
-    public void setTarifa(Float tarifa) {
-        this.tarifa = tarifa;
-    }
 }

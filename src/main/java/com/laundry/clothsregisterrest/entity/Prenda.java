@@ -23,23 +23,24 @@ public class Prenda {
     @Temporal(TemporalType.DATE)
     private Date fecha_entrega;
 
-    private Integer id_tipo_tela;
+    private Integer tipo_tela_id_tipo_tela;
 
-    private Integer id_tipo_operacion;
+    private Integer tipo_operacion_id_tipo_operacion;
 
-    public Prenda(Integer id_prenda, String color, Integer id_cuarto, String marca, Date fecha_ingreso, Date fecha_entrega, Integer id_tipo_tela, Integer id_tipo_operacion) {
+
+    public Prenda(Integer id_prenda, String color, Integer id_cuarto, String marca, Date fecha_ingreso, Date fecha_entrega, Integer tipo_tela_id_tipo_tela, Integer tipo_operacion_id_tipo_operacion) {
+        super();
         this.id_prenda = id_prenda;
         this.color = color;
         this.id_cuarto = id_cuarto;
         this.marca = marca;
         this.fecha_ingreso = fecha_ingreso;
         this.fecha_entrega = fecha_entrega;
-        this.id_tipo_tela = id_tipo_tela;
-        this.id_tipo_operacion = id_tipo_operacion;
+        this.tipo_tela_id_tipo_tela = tipo_tela_id_tipo_tela;
+        this.tipo_operacion_id_tipo_operacion = tipo_operacion_id_tipo_operacion;
     }
 
     public Prenda(){
-
     }
 
     public void setId_prenda(Integer id_prenda) {
@@ -62,17 +63,18 @@ public class Prenda {
         this.fecha_entrega = fecha_entrega;
     }
 
-    public void setId_tipo_tela(Integer id_tipo_tela) {
-        this.id_tipo_tela = id_tipo_tela;
+    public void setTipo_tela_id_tipo_tela(Integer tipo_tela_id_tipo_tela) {
+        this.tipo_tela_id_tipo_tela = tipo_tela_id_tipo_tela;
     }
 
-    public void setId_tipo_operacion(Integer id_tipo_operacion) {
-        this.id_tipo_operacion = id_tipo_operacion;
+    public void setTipo_operacion_id_tipo_operacion(Integer tipo_operacion_id_tipo_operacion) {
+        this.tipo_operacion_id_tipo_operacion = tipo_operacion_id_tipo_operacion;
     }
 
     public void setMarca(String marca) {
         this.marca = marca;
     }
+
 
 
     public Integer getId_prenda() {
@@ -95,17 +97,16 @@ public class Prenda {
         return fecha_entrega;
     }
 
-    public Integer getId_tipo_tela() {
-        return id_tipo_tela;
+    public Integer getTipo_tela_id_tipo_tela() {
+        return tipo_tela_id_tipo_tela;
     }
 
-    public Integer getId_tipo_operacion() {
-        return id_tipo_operacion;
+    public Integer getTipo_operacion_id_tipo_operacion() {
+        return tipo_operacion_id_tipo_operacion;
     }
 
     public String getMarca() {
         return marca;
     }
-
 
 }

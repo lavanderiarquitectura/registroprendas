@@ -1,6 +1,10 @@
+/home/seacabezasma/project_sa/cloths-register-rest/src/main/java/com/laundry/clothsregisterrest/controller/PrendaFacturacionController.java
 /home/seacabezasma/project_sa/cloths-register-rest/src/main/java/com/laundry/clothsregisterrest/entity/Prenda.java
+/home/seacabezasma/project_sa/cloths-register-rest/src/main/java/com/laundry/clothsregisterrest/entity/PrendaFacturacion.java
+/home/seacabezasma/project_sa/cloths-register-rest/src/main/java/com/laundry/clothsregisterrest/entity/FacRecargoTela.java
 /home/seacabezasma/project_sa/cloths-register-rest/src/main/java/com/laundry/clothsregisterrest/repository/PrendaRepository.java
 /home/seacabezasma/project_sa/cloths-register-rest/src/main/java/com/laundry/clothsregisterrest/ClothsRegisterRestApplication.java
 /home/seacabezasma/project_sa/cloths-register-rest/src/main/java/com/laundry/clothsregisterrest/controller/PrendaController.java
+/home/seacabezasma/project_sa/cloths-register-rest/src/main/java/com/laundry/clothsregisterrest/repository/TipoTelaRepository.java
 /home/seacabezasma/project_sa/cloths-register-rest/src/main/java/com/laundry/clothsregisterrest/entity/TipoOperacion.java
 /home/seacabezasma/project_sa/cloths-register-rest/src/main/java/com/laundry/clothsregisterrest/entity/TipoTela.java

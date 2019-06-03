@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RequestMapping("/cloth_register")
 public class PrendaController {
 
@@ -45,8 +46,8 @@ public class PrendaController {
         prenda.setFecha_ingreso(userObject.getFecha_ingreso());
         prenda.setMarca(userObject.getMarca());
         prenda.setId_cuarto(userObject.getId_cuarto());
-        prenda.setId_tipo_operacion(userObject.getId_tipo_operacion());
-        prenda.setId_tipo_tela(userObject.getId_tipo_tela());
+        prenda.setTipo_operacion_id_tipo_operacion(userObject.getTipo_operacion_id_tipo_operacion());
+        prenda.setTipo_tela_id_tipo_tela(userObject.getTipo_tela_id_tipo_tela());
 
         return prendaRepository.save(prenda);
     }

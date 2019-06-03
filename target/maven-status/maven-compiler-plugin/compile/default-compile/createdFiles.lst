@@ -1,6 +1,10 @@
 com/laundry/clothsregisterrest/repository/PrendaRepository.class
 com/laundry/clothsregisterrest/controller/PrendaController.class
 com/laundry/clothsregisterrest/ClothsRegisterRestApplication.class
+com/laundry/clothsregisterrest/repository/TipoTelaRepository.class
 com/laundry/clothsregisterrest/entity/TipoOperacion.class
+com/laundry/clothsregisterrest/controller/PrendaFacturacionController.class
+com/laundry/clothsregisterrest/entity/FacRecargoTela.class
+com/laundry/clothsregisterrest/entity/PrendaFacturacion.class
 com/laundry/clothsregisterrest/entity/TipoTela.class
 com/laundry/clothsregisterrest/entity/Prenda.class
