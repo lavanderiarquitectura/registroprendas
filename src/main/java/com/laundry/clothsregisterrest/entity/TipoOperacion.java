@@ -1,14 +1,12 @@
 package com.laundry.clothsregisterrest.entity;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
 
-@Entity
-@Table(name = "tipo_operacion")
+
 public class TipoOperacion {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id_tipo_operacion;
     private String descripcion;
 

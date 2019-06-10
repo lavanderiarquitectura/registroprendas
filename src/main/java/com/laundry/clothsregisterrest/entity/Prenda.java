@@ -1,14 +1,15 @@
 package com.laundry.clothsregisterrest.entity;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.bson.types.ObjectId;
+
 import java.util.Date;
 
-@Entity
-@Table(name = "prenda")
 public class Prenda {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    private ObjectId _id;
+
     private Integer id_prenda;
 
     private  String  color;
@@ -17,25 +18,27 @@ public class Prenda {
 
     private String marca;
 
-    @Temporal(TemporalType.DATE)
     private Date fecha_ingreso;
 
-    @Temporal(TemporalType.DATE)
     private Date fecha_entrega;
+
+    private Integer id_lote;
 
     private Integer tipo_tela_id_tipo_tela;
 
     private Integer tipo_operacion_id_tipo_operacion;
 
 
-    public Prenda(Integer id_prenda, String color, Integer id_cuarto, String marca, Date fecha_ingreso, Date fecha_entrega, Integer tipo_tela_id_tipo_tela, Integer tipo_operacion_id_tipo_operacion) {
+    public Prenda(ObjectId _id, Integer id_prenda, String color, Integer id_cuarto, String marca, Date fecha_ingreso, Date fecha_entrega, Integer tipo_tela_id_tipo_tela, Integer id_lote,Integer tipo_operacion_id_tipo_operacion) {
         super();
+        this._id= _id;
         this.id_prenda = id_prenda;
         this.color = color;
         this.id_cuarto = id_cuarto;
         this.marca = marca;
         this.fecha_ingreso = fecha_ingreso;
         this.fecha_entrega = fecha_entrega;
+        this.id_lote = id_lote;
         this.tipo_tela_id_tipo_tela = tipo_tela_id_tipo_tela;
         this.tipo_operacion_id_tipo_operacion = tipo_operacion_id_tipo_operacion;
     }
@@ -109,4 +112,19 @@ public class Prenda {
         return marca;
     }
 
+    public String get_id() {
+        return _id.toHexString();
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
+    }
+
+    public Integer getId_lote() {
+        return id_lote;
+    }
+
+    public void setId_lote(Integer id_lote) {
+        this.id_lote = id_lote;
+    }
 }
