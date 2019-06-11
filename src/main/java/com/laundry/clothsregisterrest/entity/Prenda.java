@@ -24,12 +24,14 @@ public class Prenda {
 
     private Integer id_lote;
 
+    private Integer tipo_prenda_id_tipo_prenda;
+
     private Integer tipo_tela_id_tipo_tela;
 
     private Integer tipo_operacion_id_tipo_operacion;
 
 
-    public Prenda(ObjectId _id, Integer id_prenda, String color, Integer id_cuarto, String marca, Date fecha_ingreso, Date fecha_entrega, Integer tipo_tela_id_tipo_tela, Integer id_lote,Integer tipo_operacion_id_tipo_operacion) {
+    public Prenda(ObjectId _id, Integer id_prenda, String color, Integer id_cuarto, String marca, Date fecha_ingreso, Date fecha_entrega, Integer tipo_tela_id_tipo_tela, Integer id_lote, Integer tipo_pernda_id_tipo_prenda,Integer tipo_operacion_id_tipo_operacion) {
         super();
         this._id= _id;
         this.id_prenda = id_prenda;
@@ -39,6 +41,7 @@ public class Prenda {
         this.fecha_ingreso = fecha_ingreso;
         this.fecha_entrega = fecha_entrega;
         this.id_lote = id_lote;
+        this.tipo_prenda_id_tipo_prenda = tipo_pernda_id_tipo_prenda;
         this.tipo_tela_id_tipo_tela = tipo_tela_id_tipo_tela;
         this.tipo_operacion_id_tipo_operacion = tipo_operacion_id_tipo_operacion;
     }
@@ -126,5 +129,13 @@ public class Prenda {
 
     public void setId_lote(Integer id_lote) {
         this.id_lote = id_lote;
+    }
+
+    public Integer getTipo_prenda_id_tipo_prenda() {
+        return tipo_prenda_id_tipo_prenda;
+    }
+
+    public void setTipo_prenda_id_tipo_prenda(Integer tipo_prenda_id_tipo_prenda) {
+        this.tipo_prenda_id_tipo_prenda = tipo_prenda_id_tipo_prenda;
     }
 }

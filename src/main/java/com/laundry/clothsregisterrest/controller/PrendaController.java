@@ -27,10 +27,6 @@ public class PrendaController {
 
     RestTemplate restTemplate = new RestTemplate();
 
-/*    public class hash_key {
-        String tipo_fabrica, ;
-    }*/
-
     @GetMapping("/get")
     public List<Prenda> obtenerPrendas(){
 
@@ -132,6 +128,8 @@ public class PrendaController {
         prenda.setFecha_ingreso(userObject.getFecha_ingreso());
         prenda.setMarca(userObject.getMarca());
         prenda.setId_cuarto(userObject.getId_cuarto());
+        prenda.setId_lote(userObject.getId_lote());
+        prenda.setTipo_prenda_id_tipo_prenda(userObject.getTipo_prenda_id_tipo_prenda());
         prenda.setTipo_operacion_id_tipo_operacion(userObject.getTipo_operacion_id_tipo_operacion());
         prenda.setTipo_tela_id_tipo_tela(userObject.getTipo_tela_id_tipo_tela());
 
