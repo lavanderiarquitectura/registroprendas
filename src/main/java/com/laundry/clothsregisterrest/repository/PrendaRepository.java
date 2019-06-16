@@ -14,4 +14,7 @@ public interface PrendaRepository extends MongoRepository<Prenda, Integer>{
 
     @Query("{id_lote : ?0}")
     List<Prenda> findById_Lote(Integer id_lote);
+
+    @Query("{id_cuarto : ?0}")
+    List<Prenda> findById_cuarto(Integer id_cuarto);
 }

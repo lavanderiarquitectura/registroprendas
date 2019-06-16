@@ -2,6 +2,7 @@ package com.laundry.clothsregisterrest.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
+//import com.laundry.clothsregisterrest.ServicesConfiguration;
 import com.laundry.clothsregisterrest.entity.Lotelista;
 import com.laundry.clothsregisterrest.entity.Prenda;
 import com.laundry.clothsregisterrest.repository.PrendaRepository;
@@ -24,6 +25,9 @@ public class PrendaController {
 
     @Autowired
     private PrendaRepository prendaRepository;
+
+//    @Autowired
+//    private ServicesConfiguration servicesConfigurationInstance;
 
     RestTemplate restTemplate = new RestTemplate();
 
@@ -48,6 +52,14 @@ public class PrendaController {
 
     }
 
+
+    @GetMapping("/get/room/{room_id}")
+    public List<Prenda>  obtenerPrendaPorIDCuarto(@PathVariable("room_id") Integer roomId){
+
+        return prendaRepository.findById_cuarto(roomId);
+
+    }
+
     @PostMapping("/create")
     public Prenda crearPrenda(@RequestBody Prenda prenda)
     {
@@ -68,9 +80,9 @@ public class PrendaController {
             try {
                 tempLote = null;
 
-                maxLote = restTemplate.getForObject("http://localhost:5000/lots/max", Lote.class);
+                maxLote = restTemplate.getForObject("http://localhost:5000/lots"+"/max", Lote.class);
 
-                tempLoteList = restTemplate.getForObject("http://localhost:5000/lots/" + prenda.getTipo_operacion_id_tipo_operacion()
+                tempLoteList = restTemplate.getForObject("http://localhost:5000/lots"+ "/" + prenda.getTipo_operacion_id_tipo_operacion()
                          + "/" + prenda.getTipo_tela_id_tipo_tela() + "/false", String.class);
 
                 ObjectMapper mapper = new ObjectMapper();
