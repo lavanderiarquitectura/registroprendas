@@ -31,6 +31,8 @@ public class PrendaController {
 
     RestTemplate restTemplate = new RestTemplate();
 
+    String ipLotes = "http://3.89.89.85:5000/lots";
+
     @GetMapping("/get")
     public List<Prenda> obtenerPrendas(){
 
@@ -80,9 +82,9 @@ public class PrendaController {
             try {
                 tempLote = null;
 
-                maxLote = restTemplate.getForObject("http://localhost:5000/lots"+"/max", Lote.class);
+                maxLote = restTemplate.getForObject(ipLotes +"/max", Lote.class);
 
-                tempLoteList = restTemplate.getForObject("http://localhost:5000/lots"+ "/" + prenda.getTipo_operacion_id_tipo_operacion()
+                tempLoteList = restTemplate.getForObject(ipLotes + "/" + prenda.getTipo_operacion_id_tipo_operacion()
                          + "/" + prenda.getTipo_tela_id_tipo_tela() + "/false", String.class);
 
                 ObjectMapper mapper = new ObjectMapper();
@@ -96,7 +98,7 @@ public class PrendaController {
                 if(tempLote != null && tempLote.getCapacity().intValue() <= 100){
                     prenda.setId_lote(tempLote.getId().intValue());
                     tempLote.setCapacity(tempLote.getCapacity() + 1);
-                    restTemplate.put("http://localhost:5000/lots/" + tempLote.getId().toString(), tempLote);
+                    restTemplate.put(ipLotes + "/" + tempLote.getId().toString(), tempLote);
 
                 }else{
 
@@ -118,7 +120,7 @@ public class PrendaController {
 
                     prenda.setId_lote(con_id);
 
-                    restTemplate.postForObject("http://localhost:5000/lots", tempLote, Lote.class);
+                    restTemplate.postForObject(ipLotes, tempLote, Lote.class);
                 }
 
 
