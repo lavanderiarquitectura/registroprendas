@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface PrendaRepository extends MongoRepository<Prenda, Integer>{
@@ -17,4 +18,7 @@ public interface PrendaRepository extends MongoRepository<Prenda, Integer>{
 
     @Query("{id_cuarto : ?0}")
     List<Prenda> findById_cuarto(Integer id_cuarto);
+
+    @Query("{ tipo_operacion_id_tipo_operacion: { $in: ?0 } }")
+    List<Prenda> findByIDIipoOpIn(List<Integer> ids);
 }

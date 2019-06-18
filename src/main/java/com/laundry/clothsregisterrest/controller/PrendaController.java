@@ -32,6 +32,7 @@ public class PrendaController {
     RestTemplate restTemplate = new RestTemplate();
 
     String ipLotes = "http://3.89.89.85:5000/lots";
+    //String ipLotes = "http://localhost:5000/lots";
 
     @GetMapping("/get")
     public List<Prenda> obtenerPrendas(){
@@ -54,6 +55,40 @@ public class PrendaController {
 
     }
 
+    @GetMapping("/get/operation/{op_id}")
+    public List<Prenda> obtenerPrendasPorIDTipoOperacion(@PathVariable("op_id") Integer lot_id){
+
+        String tempLoteList = "";
+        List<Prenda> respuesta = new ArrayList<Prenda>();
+        List<Prenda> temp = new ArrayList<Prenda>();
+
+        try{
+            tempLoteList = restTemplate.getForObject(ipLotes + "/" + lot_id.toString()
+                    + "/" + "/false", String.class);
+
+            ObjectMapper mapper = new ObjectMapper();
+            CollectionType tipoLista = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Lote.class);
+            List<Lote> ob = mapper.readValue(tempLoteList, tipoLista);
+
+            for(Lote lote : ob){
+                temp = prendaRepository.findById_Lote(new Integer(lote.getId().intValue()));
+                respuesta.addAll(temp);
+
+//                for(Prenda prenda : temp)
+//                    respuesta.add(prenda);
+            }
+                //ids.add( new Integer(lote.getId().intValue()) );
+
+
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return respuesta;
+
+    }
 
     @GetMapping("/get/room/{room_id}")
     public List<Prenda>  obtenerPrendaPorIDCuarto(@PathVariable("room_id") Integer roomId){
@@ -97,7 +132,7 @@ public class PrendaController {
 
                 if(tempLote != null && tempLote.getCapacity().intValue() <= 100){
                     prenda.setId_lote(tempLote.getId().intValue());
-                    tempLote.setCapacity(tempLote.getCapacity() + 1);
+                    tempLote.setCapacity(tempLote.getCapacity().intValue() + 1);
                     restTemplate.put(ipLotes + "/" + tempLote.getId().toString(), tempLote);
 
                 }else{
