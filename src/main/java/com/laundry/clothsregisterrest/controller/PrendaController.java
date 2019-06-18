@@ -31,7 +31,7 @@ public class PrendaController {
 
     RestTemplate restTemplate = new RestTemplate();
 
-    String ipLotes = "http://3.89.89.85:5000/lots";
+    String ipLotes = "http://34.227.112.147:5000/lots";
     //String ipLotes = "http://localhost:5000/lots";
 
     @GetMapping("/get")
