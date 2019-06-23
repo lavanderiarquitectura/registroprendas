@@ -7,13 +7,13 @@ public class Lote {
 
     private Long id;
 
-    private String typeService;
-
     private Integer typeOperation;
 
     private Integer typeFabric;
 
     private Boolean isFinished;
+
+    private Integer state;
 
     private Integer capacity;
 
@@ -27,14 +27,6 @@ public class Lote {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTypeService() {
-        return typeService;
-    }
-
-    public void setTypeService(String typeService) {
-        this.typeService = typeService;
     }
 
     public Integer getTypeOperation() {
@@ -59,6 +51,14 @@ public class Lote {
 
     public void setIsFinished(Boolean finished) {
         isFinished = finished;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     public Integer getCapacity() {

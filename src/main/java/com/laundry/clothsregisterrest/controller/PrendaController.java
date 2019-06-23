@@ -31,7 +31,7 @@ public class PrendaController {
 
     RestTemplate restTemplate = new RestTemplate();
 
-    String ipLotes = "http://34.227.112.147:5000/lots";
+    String ipLotes = "http://100.26.191.111:5000/lots";
     //String ipLotes = "http://localhost:5000/lots";
 
     @GetMapping("/get")
@@ -130,9 +130,12 @@ public class PrendaController {
                     tempLote = ob.get(0);
                 }
 
+                if(tempLote != null && tempLote.getCapacity() == null)
+                    tempLote.setCapacity(0);
+
                 if(tempLote != null && tempLote.getCapacity().intValue() <= 100){
                     prenda.setId_lote(tempLote.getId().intValue());
-                    tempLote.setCapacity(tempLote.getCapacity().intValue() + 1);
+                    tempLote.setCapacity(new Integer(tempLote.getCapacity() + 1));
                     restTemplate.put(ipLotes + "/" + tempLote.getId().toString(), tempLote);
 
                 }else{
@@ -150,13 +153,14 @@ public class PrendaController {
                     tempLote.setTypeFabric(prenda.getTipo_tela_id_tipo_tela());
                     tempLote.setTypeOperation(prenda.getTipo_operacion_id_tipo_operacion());
                     tempLote.setIsFinished(false);
-                    tempLote.setTypeService(prenda.getTipo_operacion_id_tipo_operacion().toString());
                     tempLote.setCapacity(1);
+                    tempLote.setState(0);
+
 
                     prenda.setId_lote(con_id);
 
                     restTemplate.postForObject(ipLotes, tempLote, Lote.class);
-                }
+            }
 
 
             } catch (Exception e) {
