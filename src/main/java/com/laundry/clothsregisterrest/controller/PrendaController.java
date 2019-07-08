@@ -3,10 +3,8 @@ package com.laundry.clothsregisterrest.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 //import com.laundry.clothsregisterrest.ServicesConfiguration;
-import com.laundry.clothsregisterrest.entity.Lotelista;
-import com.laundry.clothsregisterrest.entity.Prenda;
+import com.laundry.clothsregisterrest.entity.*;
 import com.laundry.clothsregisterrest.repository.PrendaRepository;
-import com.laundry.clothsregisterrest.entity.Lote;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +12,11 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -32,6 +33,8 @@ public class PrendaController {
     RestTemplate restTemplate = new RestTemplate();
 
     String ipLotes = "http://100.26.191.111:5000/lots";
+    String ipfacturacion = "http://100.26.191.111:3000";
+
     //String ipLotes = "http://localhost:5000/lots";
 
     @GetMapping("/get")
@@ -108,8 +111,10 @@ public class PrendaController {
     public List<Prenda> crearPrenda(@RequestBody List<Prenda> prendas)
     {
         List<Prenda> prendas_insertadas = new ArrayList<>();
+        List<PrendaFacturacion> factura_prendas = new ArrayList<>();
         Lote maxLote = new Lote(), tempLote;
         String tempLoteList = "";
+        Factura factura = new Factura();
 
         for(Prenda prenda : prendas)
         {
@@ -137,7 +142,6 @@ public class PrendaController {
                     prenda.setId_lote(tempLote.getId().intValue());
                     tempLote.setCapacity(new Integer(tempLote.getCapacity() + 1));
                     restTemplate.put(ipLotes + "/" + tempLote.getId().toString(), tempLote);
-
                 }else{
 
                     Integer con_id;
@@ -156,18 +160,41 @@ public class PrendaController {
                     tempLote.setCapacity(1);
                     tempLote.setState(0);
 
-
                     prenda.setId_lote(con_id);
 
-                    restTemplate.postForObject(ipLotes, tempLote, Lote.class);
-            }
-
+                    restTemplate.postForObject(ipLotes , tempLote, Lote.class);
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+
+            PrendaFacturacion prendaFac = new PrendaFacturacion();
+
+            prendaFac.setId_prenda(prenda.get_id());
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+            //String dateInString = prenda.get;
+            String  fecha_formato = sdf.format(prenda.getFecha_ingreso());
+
+            prendaFac.setFecha_ingreso(fecha_formato);
+            prendaFac.setId_operacion(prenda.getTipo_operacion_id_tipo_operacion());
+
+            factura_prendas.add(prendaFac);
             prendas_insertadas.add(prendaRepository.save(prenda));
+
         }
+
+        try {
+            factura.setFactura(factura_prendas);
+            factura.setId_cuarto(prendas_insertadas.get(0).getId_cuarto());
+
+            restTemplate.postForObject(ipfacturacion + "/postfacprendas", factura, Factura.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         return prendas_insertadas;
     }
 
