@@ -4,9 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 //import com.laundry.clothsregisterrest.ServicesConfiguration;
 import com.laundry.clothsregisterrest.entity.*;
+import com.laundry.clothsregisterrest.repository.PeticionRepository;
 import com.laundry.clothsregisterrest.repository.PrendaRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -14,10 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
@@ -26,6 +28,9 @@ public class PrendaController {
 
     @Autowired
     private PrendaRepository prendaRepository;
+
+    @Autowired
+    private PeticionRepository peticionController;
 
 //    @Autowired
 //    private ServicesConfiguration servicesConfigurationInstance;
@@ -115,6 +120,7 @@ public class PrendaController {
         Lote maxLote = new Lote(), tempLote;
         String tempLoteList = "";
         Factura factura = new Factura();
+        Peticion peticion = new Peticion();
 
         for(Prenda prenda : prendas)
         {
@@ -187,10 +193,16 @@ public class PrendaController {
         }
 
         try {
+
             factura.setFactura(factura_prendas);
             factura.setId_cuarto(prendas_insertadas.get(0).getId_cuarto());
 
+            //peticion.set_id(ObjectId.get());
+            peticion.setId_room(prendas_insertadas.get(0).getId_cuarto());
+
+            peticionController.save(peticion);
             restTemplate.postForObject(ipfacturacion + "/postfacprendas", factura, Factura.class);
+
         }catch (Exception e){
             e.printStackTrace();
         }
