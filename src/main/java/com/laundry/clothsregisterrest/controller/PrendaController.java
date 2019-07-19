@@ -37,10 +37,11 @@ public class PrendaController {
 
     RestTemplate restTemplate = new RestTemplate();
 
-    String ipLotes = "http://100.26.191.111:5000/lots";
-    String ipfacturacion = "http://100.26.191.111:3000";
+//    String ipLotes = "http://100.26.191.111:5000/lots";
+//    String ipfacturacion = "http://100.26.191.111:3000";
 
-    //String ipLotes = "http://localhost:5000/lots";
+    String ipLotes = "http://dispositivos.lavanderia.local:5000/lots";
+    String ipfacturacion = "http://facturacion.lavanderia.local:3000";
 
     @GetMapping("/get")
     public List<Prenda> obtenerPrendas(){
